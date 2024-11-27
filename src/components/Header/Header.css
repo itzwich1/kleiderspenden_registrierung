@@ -1,0 +1,7 @@
+
+
+nav ul {
+    list-style-type: none; /* Entfernt die Aufzählungszeichen */
+    padding: 0; /* Entfernt die Standard-Einrückung */
+    margin: 0; /* Entfernt die Standard-Abstände */
+  }

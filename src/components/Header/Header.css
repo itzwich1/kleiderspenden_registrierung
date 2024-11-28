@@ -13,6 +13,12 @@ nav {
   min-width: 320px; /*Minimale breite fuer Smartphone Bildschirme*/
 }
 
+/*.siteHeader img {
+  width: 80px; 
+  height: 30px; 
+  object-fit: cover; 
+}*/
+
 nav .siteHeader {
   font-size: 1.5rem;
   margin: 1rem;

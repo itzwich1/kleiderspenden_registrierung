@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
+import logo from "../../images/KleiderHeld_klein.png"
 
 class Header extends Component {
   state = {
@@ -19,7 +20,7 @@ class Header extends Component {
     return (
       <nav>
         <Link to="/" className="siteHeader">
-          KleiderHeld
+        <img src={logo} alt="KleiderHeld Logo" />
         </Link>
         <div className="mobileManu" onClick={this.toggleMenu}>
           <span></span>

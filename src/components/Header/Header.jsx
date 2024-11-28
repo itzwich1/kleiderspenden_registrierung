@@ -1,18 +1,41 @@
-import React, { Component } from "react";
-import {Link} from "react-router-dom"
-import "./Header.css"
+import React, { Component, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import "./Header.css";
 
 class Header extends Component {
-  state = {};
+  state = {
+    isMenuOpen: false,
+  };
+
+  toggleMenu = () => {
+    this.setState((prevState) => ({
+      isMenuOpen: !prevState.isMenuOpen, // Zustand aendern
+    }));
+  };
+
   render() {
+    const { isMenuOpen } = this.state;
+
     return (
       <nav>
-        
-
-        <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/ueberuns">Über uns</Link></li>
-          <li><Link to="/unseregeschichte">Unsere Geschichte</Link></li>
+        <Link to="/" className="siteHeader">
+          Website
+        </Link>
+        <div className="mobileManu" onClick={this.toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul className={isMenuOpen ? "open" : "closed"}>
+          <li>
+            <NavLink to="/home">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/ueberuns">Über uns</NavLink>
+          </li>
+          <li>
+            <NavLink to="/unseregeschichte">Unsere Geschichte</NavLink>
+          </li>
         </ul>
       </nav>
     );

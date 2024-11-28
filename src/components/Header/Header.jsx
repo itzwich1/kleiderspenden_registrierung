@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/KleiderHeld_klein.png"

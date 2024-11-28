@@ -1,0 +1,12 @@
+.fixedFooter {
+    position: fixed; /* Fixiert den Footer */
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    background-color: #1e352f; 
+    color: white; 
+    text-align: center; 
+    padding: 10px 0; 
+    z-index: 100; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+  }

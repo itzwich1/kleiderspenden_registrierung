@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/home";
 import UeberUns from "./pages/ueberuns";
 import UnsereGeschichte from "./pages/unseregeschichte";
+import Footer from "./components/Footer/Footer";
 
 /*import Home from "./pages/Home";
 import UeberUns from "./pages/UeberUns";
@@ -22,6 +23,8 @@ export default function App() {
           <Route path="/UeberUns" element={<UeberUns />} />
           <Route path="/UnsereGeschichte" element={<UnsereGeschichte />} />
         </Routes>
+
+        <Footer />
       </BrowserRouter>
     </div>
     //<h1>Hallo Test 1234</h1>

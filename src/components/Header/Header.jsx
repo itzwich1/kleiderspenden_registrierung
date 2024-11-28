@@ -19,7 +19,7 @@ class Header extends Component {
     return (
       <nav>
         <Link to="/" className="siteHeader">
-          Website
+          KleiderHeld
         </Link>
         <div className="mobileManu" onClick={this.toggleMenu}>
           <span></span>

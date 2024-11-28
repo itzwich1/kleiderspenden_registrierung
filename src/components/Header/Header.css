@@ -10,7 +10,7 @@ nav {
   color: white;
   position: sticky;
   top: 0;
-  min-width: 320px;
+  min-width: 320px; /*Minimale breite fuer Smartphone Bildschirme*/
 }
 
 nav .siteHeader {

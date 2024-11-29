@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import UeberUns from "./pages/ueberuns";
 import UnsereGeschichte from "./pages/unseregeschichte";
 import Footer from "./components/Footer/Footer";
+import RegisterForm from "./pages/Home/FormularElements/RegisterForm";
 import { Container } from "react-bootstrap";
 
 /*import Home from "./pages/Home";
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/UeberUns" element={<UeberUns />} />
             <Route path="/UnsereGeschichte" element={<UnsereGeschichte />} />
+            <Route path="/RegisterForm" element={<RegisterForm />} />
           </Routes>
         </Container>
 

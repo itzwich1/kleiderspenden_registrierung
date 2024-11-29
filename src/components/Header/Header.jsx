@@ -1,46 +1,42 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import "./Header.css";
-import logo from "../../images/KleiderHeld_klein.png"
+import { Navbar, Nav, Container } from "react-bootstrap"; // Importiere React Bootstrap Komponenten
+import logo from "../../images/KleiderHeld_klein.png"; // Dein Logo importieren
+import "./Header.css"; // Falls du CSS weiter verwenden möchtest
 
-class Header extends Component {
-  state = {
-    isMenuOpen: false,
-  };
+const Header = () => {
+  return (
+    <Navbar expand="lg" className="custom-navbar" sticky="top">
+      <Container>
+        {/* Logo als Link zur Startseite */}
+        <Navbar.Brand as={Link} to="/">
+          <img
+            src={logo}
+            alt="KleiderHeld Logo"
+            style={{ height: "40px", objectFit: "cover" }}
+          />
+        </Navbar.Brand>
 
-  toggleMenu = () => {
-    this.setState((prevState) => ({
-      isMenuOpen: !prevState.isMenuOpen, // Zustand aendern
-    }));
-  };
+        {/* Hamburger-Menü für mobile Ansicht */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="custom-toggler"/>
 
-  render() {
-    const { isMenuOpen } = this.state;
-
-    return (
-      <nav>
-        <Link to="/" className="siteHeader">
-        <img src={logo} alt="KleiderHeld Logo" />
-        </Link>
-        <div className="mobileManu" onClick={this.toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <ul className={isMenuOpen ? "open" : "closed"}>
-          <li>
-            <NavLink to="/home">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/ueberuns">Über uns</NavLink>
-          </li>
-          <li>
-            <NavLink to="/unseregeschichte">Unsere Geschichte</NavLink>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-}
+        {/* Die Navigationslinks */}
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            <Nav.Link as={NavLink} to="/home">
+              Home
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/ueberuns">
+              Über uns
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/unseregeschichte">
+              Unsere Geschichte
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
 
 export default Header;

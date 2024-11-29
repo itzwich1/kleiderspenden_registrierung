@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
-import "./Footer.css"
-
+import React, { Component } from "react";
+import "./Footer.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Footer extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <footer className="fixedFooter">
-              <p>© 2024 KleiderHeld. Alle Rechte vorbehalten.</p>
-            </footer>
-          );
-    }
+  state = {};
+  render() {
+    return (
+      <footer
+        className="fixedFooter"
+      >
+        <Container>
+        <Row className="text-center">
+          <Col>
+            <p>© 2024 KleiderHeld. Alle Rechte vorbehalten.</p>
+          </Col>
+        </Row>
+        </Container>
+      </footer>
+    );
+  }
 }
- 
+
 export default Footer;

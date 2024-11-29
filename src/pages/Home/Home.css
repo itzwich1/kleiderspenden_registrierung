@@ -1,4 +1,4 @@
-.Home {
+/*.Home {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,7 @@
 }
 
 .logo {
-  width: 350px; /* Passe die Größe des Logos an */
+  width: 350px; 
   height: auto;
   margin-bottom: 20px;
   margin-top: 50px;
@@ -30,4 +30,4 @@
 .text {
   font-size: 1.2rem;
   color: #333;
-}
+}*/

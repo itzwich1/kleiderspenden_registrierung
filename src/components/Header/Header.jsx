@@ -7,7 +7,7 @@ import "./Header.css"; // Falls du CSS weiter verwenden möchtest
 const Header = () => {
   return (
     <Navbar expand="lg" className="custom-navbar" sticky="top">
-      <Container>
+      <Container className="py-2">
         {/* Logo als Link zur Startseite */}
         <Navbar.Brand as={Link} to="/">
           <img

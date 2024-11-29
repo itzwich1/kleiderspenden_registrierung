@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import UeberUns from "./pages/ueberuns";
 import UnsereGeschichte from "./pages/unseregeschichte";
 import Footer from "./components/Footer/Footer";
+import { Container } from "react-bootstrap";
 
 /*import Home from "./pages/Home";
 import UeberUns from "./pages/UeberUns";
@@ -13,17 +14,21 @@ import UnsereGeschichte from "./pages/UnsereGeschichte";*/
 
 export default function App() {
   return (
-    <div>
-      
+    <div className="d-flex flex-column min-vh-100">
       <BrowserRouter>
-      <Header />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/UeberUns" element={<UeberUns />} />
-          <Route path="/UnsereGeschichte" element={<UnsereGeschichte />} />
-        </Routes>
+        <Header />
 
+        {/* Main section */}
+        <Container className="flex-grow-1 d-flex align-items-top justify-content-center">
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/UeberUns" element={<UeberUns />} />
+            <Route path="/UnsereGeschichte" element={<UnsereGeschichte />} />
+          </Routes>
+        </Container>
+
+        {/* Footer section */}
         <Footer />
       </BrowserRouter>
     </div>

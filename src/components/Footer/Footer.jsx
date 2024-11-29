@@ -6,9 +6,7 @@ class Footer extends Component {
   state = {};
   render() {
     return (
-      <footer
-        className="fixedFooter"
-      >
+      <footer className="fixedFooter py-1">
         <Container>
         <Row className="text-center">
           <Col>

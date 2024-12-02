@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Stepper, Step } from "react-form-stepper";
+import { Stepper,  } from "react-form-stepper";
+import AbgabeartForm from "./AbgabeartForm";
+import KrisengebietForm from "./KrisengebietForm";
+import SpendenkorbForm from "./SpendenkorbForm";
+import { Button } from "react-bootstrap";
 
 export default function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0);
 
   const steps = [
-    { name: "Personal Details" },
-    { name: "Contact Details" },
-    { name: "Review & Submit" },
+    { name: "Abgabeart" },
+    { name: "Kriesengebiet" },
+    { name: "Spendenkorb" },
   ];
 
   const handleNext = () => {
@@ -25,26 +29,15 @@ export default function RegisterForm() {
     switch (currentStep) {
       case 0:
         return (
-          <div>
-            <h2>Step 1: Personal Details</h2>
-            <input type="text" placeholder="First Name" />
-            <input type="text" placeholder="Last Name" />
-          </div>
+          <AbgabeartForm/>
         );
       case 1:
         return (
-          <div>
-            <h2>Step 2: Contact Details</h2>
-            <input type="email" placeholder="Email" />
-            <input type="text" placeholder="Phone" />
-          </div>
+          <KrisengebietForm/>
         );
       case 2:
         return (
-          <div>
-            <h2>Step 3: Review & Submit</h2>
-            <p>All steps completed! Click submit to finish.</p>
-          </div>
+          <SpendenkorbForm/>
         );
       default:
         return null;
@@ -64,15 +57,15 @@ export default function RegisterForm() {
           inactiveBgColor: "#cfd8dc",
         }}
       />
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "20px" }} className="d-flex flex-column align-items-center">
         {renderStepContent()}
-        <div style={{ marginTop: "20px" }}>
-          <button onClick={handleBack} disabled={currentStep === 0}>
+        <div style={{ marginTop: "20px" }} className="d-flex gap-5 mt-3">
+          <Button variant="success" size="lg" onClick={handleBack} disabled={currentStep === 0}>
             Back
-          </button>
-          <button onClick={handleNext} disabled={currentStep === 2}>
+          </Button>
+          <Button variant="success" size="lg" onClick={handleNext} disabled={currentStep === 2}>
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </div>

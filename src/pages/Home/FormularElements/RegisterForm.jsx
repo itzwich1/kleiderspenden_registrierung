@@ -8,6 +8,11 @@ import { Button } from "react-bootstrap";
 export default function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState(1);
+  const [userData, setUserData] = useState({
+    abgabeart: {},
+    krisengebiet: {},
+    spendenkorb: {},
+  });
 
   const steps = [
     { name: "Abgabeart" },
@@ -27,9 +32,34 @@ export default function RegisterForm() {
     }
   };
 
-  //TODELETE
-  const test = () => {
-    console.log(deliveryOption);
+  const renderButtons = () => {
+    return (
+      <div className="d-flex gap-5 mt-3">
+        {/* Back Button */}
+        <Button
+          variant="success"
+          size="lg"
+          onClick={handleBack}
+          disabled={currentStep === 0}
+        >
+          Back
+        </Button>
+        {currentStep === 2 ? (
+          <Button variant="primary" size="lg" >
+            Bestellung Abschließen
+          </Button>
+        ) : (
+          <Button
+            variant="success"
+            size="lg"
+            onClick={handleNext}
+            disabled={currentStep === 2}
+          >
+            Next
+          </Button>
+        )}
+      </div>
+    );
   };
 
   const renderStepContent = () => {
@@ -69,31 +99,7 @@ export default function RegisterForm() {
       >
         {renderStepContent()}
         <div style={{ marginTop: "20px" }} className="d-flex gap-5 mt-3">
-          <Button
-            variant="success"
-            size="lg"
-            onClick={handleBack}
-            disabled={currentStep === 0}
-          >
-            Back
-          </Button>
-          <Button
-            variant="success"
-            size="lg"
-            onClick={handleNext}
-            disabled={currentStep === 2}
-          >
-            Next
-          </Button>
-
-          <Button
-            variant="success"
-            size="lg"
-            onClick={test}
-            
-          >
-            Test
-          </Button>
+          {renderButtons()}
         </div>
       </div>
     </div>

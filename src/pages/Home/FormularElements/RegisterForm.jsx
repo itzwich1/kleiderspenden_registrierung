@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Stepper,  } from "react-form-stepper";
+import { Stepper } from "react-form-stepper";
 import AbgabeartForm from "./AbgabeartForm";
 import KrisengebietForm from "./KrisengebietForm";
 import SpendenkorbForm from "./SpendenkorbForm";
@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 
 export default function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [deliveryOption, setDeliveryOption] = useState(1);
 
   const steps = [
     { name: "Abgabeart" },
@@ -25,20 +26,25 @@ export default function RegisterForm() {
       setCurrentStep((prevStep) => prevStep - 1);
     }
   };
+
+  //TODELETE
+  const test = () => {
+    console.log(deliveryOption);
+  };
+
   const renderStepContent = () => {
     switch (currentStep) {
       case 0:
         return (
-          <AbgabeartForm/>
+          <AbgabeartForm
+            deliveryOption={deliveryOption}
+            setDeliveryOption={setDeliveryOption}
+          />
         );
       case 1:
-        return (
-          <KrisengebietForm/>
-        );
+        return <KrisengebietForm />;
       case 2:
-        return (
-          <SpendenkorbForm/>
-        );
+        return <SpendenkorbForm />;
       default:
         return null;
     }
@@ -57,14 +63,36 @@ export default function RegisterForm() {
           inactiveBgColor: "#cfd8dc",
         }}
       />
-      <div style={{ marginTop: "20px" }} className="d-flex flex-column align-items-center">
+      <div
+        style={{ marginTop: "20px" }}
+        className="d-flex flex-column align-items-center"
+      >
         {renderStepContent()}
         <div style={{ marginTop: "20px" }} className="d-flex gap-5 mt-3">
-          <Button variant="success" size="lg" onClick={handleBack} disabled={currentStep === 0}>
+          <Button
+            variant="success"
+            size="lg"
+            onClick={handleBack}
+            disabled={currentStep === 0}
+          >
             Back
           </Button>
-          <Button variant="success" size="lg" onClick={handleNext} disabled={currentStep === 2}>
+          <Button
+            variant="success"
+            size="lg"
+            onClick={handleNext}
+            disabled={currentStep === 2}
+          >
             Next
+          </Button>
+
+          <Button
+            variant="success"
+            size="lg"
+            onClick={test}
+            
+          >
+            Test
           </Button>
         </div>
       </div>

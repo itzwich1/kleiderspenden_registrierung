@@ -20,13 +20,13 @@ export default function RegisterForm() {
     { name: "Spendenkorb" },
   ];
 
-  const handleNext = () => {
+  const next = () => {
     if (currentStep < 2) {
       setCurrentStep((prevStep) => prevStep + 1);
     }
   };
 
-  const handleBack = () => {
+  const back = () => {
     if (currentStep > 0) {
       setCurrentStep((prevStep) => prevStep - 1);
     }
@@ -39,7 +39,7 @@ export default function RegisterForm() {
         <Button
           variant="success"
           size="lg"
-          onClick={handleBack}
+          onClick={back}
           disabled={currentStep === 0}
         >
           Back
@@ -52,7 +52,7 @@ export default function RegisterForm() {
           <Button
             variant="success"
             size="lg"
-            onClick={handleNext}
+            onClick={next}
             disabled={currentStep === 2}
           >
             Next

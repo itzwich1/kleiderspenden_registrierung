@@ -8,11 +8,16 @@ import { Button } from "react-bootstrap";
 export default function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState(1);
+  const [selectedRegion, setSelectedRegion] = useState("");
   const [userData, setUserData] = useState({
     abgabeart: {},
     krisengebiet: {},
     spendenkorb: {},
   });
+
+const selectedRegionChange = (region) => {
+  setSelectedRegion(region);
+}
 
   const steps = [
     { name: "Abgabeart" },
@@ -20,13 +25,13 @@ export default function RegisterForm() {
     { name: "Spendenkorb" },
   ];
 
-  const next = () => {
+  const nextClicked = () => {
     if (currentStep < 2) {
       setCurrentStep((prevStep) => prevStep + 1);
     }
   };
 
-  const back = () => {
+  const backClicked = () => {
     if (currentStep > 0) {
       setCurrentStep((prevStep) => prevStep - 1);
     }
@@ -39,7 +44,7 @@ export default function RegisterForm() {
         <Button
           variant="success"
           size="lg"
-          onClick={back}
+          onClick={backClicked}
           disabled={currentStep === 0}
         >
           Back
@@ -52,7 +57,7 @@ export default function RegisterForm() {
           <Button
             variant="success"
             size="lg"
-            onClick={next}
+            onClick={nextClicked}
             disabled={currentStep === 2}
           >
             Next
@@ -72,7 +77,8 @@ export default function RegisterForm() {
           />
         );
       case 1:
-        return <KrisengebietForm />;
+        //selectedRegionChange funktion an Kind Componente uebergeben
+        return <KrisengebietForm selectedRegion={selectedRegion} onOptionChange={selectedRegionChange}/>;
       case 2:
         return <SpendenkorbForm />;
       default:

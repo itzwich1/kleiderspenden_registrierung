@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+//import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import ukraine from "../../../images/Krisengebiet/Ukraine.png";
 import suedsudan from "../../../images/Krisengebiet/Suedsudan.png";

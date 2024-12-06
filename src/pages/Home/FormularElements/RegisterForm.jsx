@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import { Stepper, Step } from "react-form-stepper";
+import { Stepper } from "react-form-stepper";
 import AbgabeartForm from "./AbgabeartForm";
 import KrisengebietForm from "./KrisengebietForm";
 import SpendenkorbForm from "./SpendenkorbForm";
 import { Button } from "react-bootstrap";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 
 export default function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState(0);
   const [selectedRegion, setSelectedRegion] = useState("");
 
-  const [userData, setUserData] = useState({
+  /*const [userData, setUserData] = useState({
     abgabeart: {},
     krisengebiet: {},
     spendenkorb: {},
-  });
+  });*/
 
   let steps = [
     { name: "Abgabeart", isVisible: true },

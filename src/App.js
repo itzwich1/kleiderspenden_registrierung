@@ -4,14 +4,11 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import UeberUns from "./pages/ueberuns";
-import UnsereGeschichte from "./pages/unseregeschichte";
+import KrisengebietInfos from "./pages/krisengebietInfos";
 import Footer from "./components/Footer/Footer";
 import RegisterForm from "./pages/Home/FormularElements/RegisterForm";
 import { Container } from "react-bootstrap";
 
-/*import Home from "./pages/Home";
-import UeberUns from "./pages/UeberUns";
-import UnsereGeschichte from "./pages/UnsereGeschichte";*/
 
 export default function App() {
   return (
@@ -25,7 +22,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/UeberUns" element={<UeberUns />} />
-            <Route path="/UnsereGeschichte" element={<UnsereGeschichte />} />
+            <Route path="/KrisengebietInfos" element={<KrisengebietInfos />} />
             <Route path="/RegisterForm" element={<RegisterForm />} />
           </Routes>
         </Container>
@@ -34,9 +31,5 @@ export default function App() {
         <Footer />
       </BrowserRouter>
     </div>
-    //<h1>Hallo Test 1234</h1>
-    //<Route path="/home" element={<Home />} />
-    //<Route path="/UeberUns" element={<UeberUns />} />
-    //<Route path="/UnsereGeschichte" element={<UnsereGeschichte />} />
   );
 }

@@ -29,8 +29,8 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/ueberuns">
               Über uns
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/unseregeschichte">
-              Unsere Geschichte
+            <Nav.Link as={NavLink} to="/KrisengebietInfos">
+              Krisengebiet Informationen
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

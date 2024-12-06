@@ -8,7 +8,7 @@ import mali from "../../../images/Krisengebiet/Mali.png";
 import somalia from "../../../images/Krisengebiet/Somalia.png";
 //import ukraine from "../../../images/Krisengebiet/"
 
-export default function KrisengebietForm({ selectedRegion, onOptionChange }) {
+export default function KrisengebietForm({ selectedRegion, setSelectedRegion }) {
 
   return (
     <div className="d-flex flex-column align-items-center">
@@ -22,7 +22,7 @@ export default function KrisengebietForm({ selectedRegion, onOptionChange }) {
               value="Ukraine"
               name="krisengebiet"
               checked={selectedRegion === "Ukraine"}
-              onChange={(event) => onOptionChange(event.target.value)}
+              onChange={(event) => setSelectedRegion(event.target.value)}
             />
              {" "}
             <label htmlFor="ukraine">
@@ -38,7 +38,7 @@ export default function KrisengebietForm({ selectedRegion, onOptionChange }) {
               value="Somalia"
               name="krisengebiet"
               checked={selectedRegion === "Somalia"}
-              onChange={(event) => onOptionChange(event.target.value)}
+              onChange={(event) => setSelectedRegion(event.target.value)}
             />
              {" "}
             <label htmlFor="somalia">
@@ -54,7 +54,7 @@ export default function KrisengebietForm({ selectedRegion, onOptionChange }) {
               value="Mali"
               name="krisengebiet"
               checked={selectedRegion === "Mali"}
-              onChange={(event) => onOptionChange(event.target.value)}
+              onChange={(event) => setSelectedRegion(event.target.value)}
             />
              {" "}
             <label htmlFor="mali">
@@ -70,7 +70,7 @@ export default function KrisengebietForm({ selectedRegion, onOptionChange }) {
               value="Suedsudan"
               name="krisengebiet"
               checked={selectedRegion === "Suedsudan"}
-              onChange={(event) => onOptionChange(event.target.value)}
+              onChange={(event) => setSelectedRegion(event.target.value)}
             />
              {" "}
             <label htmlFor="suedsudan">
@@ -86,7 +86,7 @@ export default function KrisengebietForm({ selectedRegion, onOptionChange }) {
               value="Sudan"
               name="krisengebiet"
               checked={selectedRegion === "Sudan"}
-              onChange={(event) => onOptionChange(event.target.value)}
+              onChange={(event) => setSelectedRegion(event.target.value)}
             />
              {" "}
             <label htmlFor="sudan">
@@ -102,7 +102,7 @@ export default function KrisengebietForm({ selectedRegion, onOptionChange }) {
               value="Afgahnistan"
               name="krisengebiet"
               checked={selectedRegion === "Afgahnistan"}
-              onChange={(event) => onOptionChange(event.target.value)}
+              onChange={(event) => setSelectedRegion(event.target.value)}
             />
              {" "}
             <label htmlFor="afgahnistan">

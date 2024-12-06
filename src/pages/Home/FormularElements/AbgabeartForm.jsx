@@ -8,10 +8,10 @@ export default function AbgabeartForm({ deliveryOption, setDeliveryOption }) {
       
         <h3>Bitte wählen sie eine Abgabeart wie sie Ihre gespendete Kleidung uns zukommen lassen wollen.</h3>
         <ToggleButtonGroup type="radio" name="options" value={deliveryOption} onChange={(value) => setDeliveryOption(value)} >
-          <ToggleButton id="tbg-radio-1" value={1} variant="success">
+          <ToggleButton id="tbg-radio-1" value={0} variant="success">
             Abholung
           </ToggleButton>
-          <ToggleButton id="tbg-radio-2" value={2} variant="success">
+          <ToggleButton id="tbg-radio-2" value={1} variant="success">
             Abgabe vor Ort
           </ToggleButton>
         </ToggleButtonGroup>

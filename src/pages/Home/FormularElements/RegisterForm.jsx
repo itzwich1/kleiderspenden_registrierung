@@ -1,32 +1,33 @@
 import React, { useState } from "react";
-import { Stepper } from "react-form-stepper";
+import { Stepper, Step } from "react-form-stepper";
 import AbgabeartForm from "./AbgabeartForm";
 import KrisengebietForm from "./KrisengebietForm";
 import SpendenkorbForm from "./SpendenkorbForm";
 import { Button } from "react-bootstrap";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
 export default function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [deliveryOption, setDeliveryOption] = useState(1);
+  const [deliveryOption, setDeliveryOption] = useState(0);
   const [selectedRegion, setSelectedRegion] = useState("");
+
   const [userData, setUserData] = useState({
     abgabeart: {},
     krisengebiet: {},
     spendenkorb: {},
   });
 
-const selectedRegionChange = (region) => {
-  setSelectedRegion(region);
-}
-
-  const steps = [
-    { name: "Abgabeart" },
-    { name: "Kriesengebiet" },
-    { name: "Spendenkorb" },
+  let steps = [
+    { name: "Abgabeart", isVisible: true },
+    { name: "Kriesengebiet", isVisible: true },
+    { name: "Adresse", isVisible: deliveryOption === 0 },
+    { name: "Spendenkorb", isVisible: true },
   ];
 
+  let filtersteps = steps.filter((step) => step.isVisible);
+
   const nextClicked = () => {
-    if (currentStep < 2) {
+    if (currentStep < 3) {
       setCurrentStep((prevStep) => prevStep + 1);
     }
   };
@@ -35,6 +36,11 @@ const selectedRegionChange = (region) => {
     if (currentStep > 0) {
       setCurrentStep((prevStep) => prevStep - 1);
     }
+  };
+
+  const testClicked = () => {
+    console.log("Steps: ", steps.length);
+    console.log("FilterSteps: ", filtersteps.length);
   };
 
   const renderButtons = () => {
@@ -49,8 +55,8 @@ const selectedRegionChange = (region) => {
         >
           Back
         </Button>
-        {currentStep === 2 ? (
-          <Button variant="primary" size="lg" >
+        {currentStep === 3 ? (
+          <Button variant="primary" size="lg">
             Bestellung Abschließen
           </Button>
         ) : (
@@ -58,7 +64,7 @@ const selectedRegionChange = (region) => {
             variant="success"
             size="lg"
             onClick={nextClicked}
-            disabled={currentStep === 2}
+            disabled={currentStep === 3}
           >
             Next
           </Button>
@@ -78,8 +84,16 @@ const selectedRegionChange = (region) => {
         );
       case 1:
         //selectedRegionChange funktion an Kind Componente uebergeben
-        return <KrisengebietForm selectedRegion={selectedRegion} onOptionChange={selectedRegionChange}/>;
+        return (
+          <KrisengebietForm
+            selectedRegion={selectedRegion}
+            setSelectedRegion={setSelectedRegion}
+          />
+        );
       case 2:
+        return <div></div>;
+
+      case 3:
         return <SpendenkorbForm />;
       default:
         return null;
@@ -89,7 +103,7 @@ const selectedRegionChange = (region) => {
   return (
     <div>
       <Stepper
-        steps={steps.map((step, index) => ({
+        steps={filtersteps.map((step, index) => ({
           label: step.name,
         }))}
         activeStep={currentStep}
@@ -106,6 +120,9 @@ const selectedRegionChange = (region) => {
         {renderStepContent()}
         <div style={{ marginTop: "20px" }} className="d-flex gap-5 mt-3">
           {renderButtons()}
+          <Button variant="success" size="lg" onClick={testClicked}>
+            Test
+          </Button>
         </div>
       </div>
     </div>

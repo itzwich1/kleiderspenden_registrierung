@@ -1,115 +1,156 @@
 import React, { useState } from "react";
+import { Form, Button, Table, Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SpendenkorbForm() {
-  const [rows, setRows] = useState([]);
-  const [inputs, setInputs] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
+  //Aktuelle gewaehlte Werte
+  const [formData, setFormData] = useState({
+    kleidungsart: "",
+    groesse: "",
+    geschlecht: "",
+    menge: "",
   });
+
+  //Speichern des Spendenkorbs
+  const [tableData, setTableData] = useState([]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputs((prevInputs) => ({
-      ...prevInputs,
+    setFormData({
+      ...formData,
       [name]: value,
-    }));
-  };
-
-  const addRow = () => {
-    const { input1, input2, input3, input4 } = inputs;
-
-    if (!input1 || !input2 || !input3 || !input4) {
-      alert("Bitte alle Felder ausfüllen!");
-      return;
-    }
-
-    setRows((prevRows) => [
-      ...prevRows,
-      { input1, input2, input3, input4 },
-    ]);
-
-    // Eingabefelder zurücksetzen
-    setInputs({
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
     });
   };
 
-  const removeRow = (index) => {
-    setRows((prevRows) => prevRows.filter((_, i) => i !== index));
+  //Zeile entfernen
+  const addRow = () => {
+    //Sobald alle Werte gefuellt sind
+    let isEmpty = Object.values(formData).some((value) => value === "");
+    if (!isEmpty) {
+      setTableData([...tableData, formData]);
+      setFormData({ kleidungsart: "", groesse: "", geschlecht: "", menge: "" });
+    } else {
+      alert("Bitte alle Felder ausfüllen.");
+    }
+  };
+
+  const test = () => {
+    console.log("Tabellen Daten: ", tableData);
+  };
+
+  //Zeile hinzufuegen
+  const deleteRow = (index) => {
+    const updatedData = tableData.filter((_, i) => i !== index);
+    setTableData(updatedData);
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
-      <div>
-        <input
-          type="text"
-          name="input1"
-          value={inputs.input1}
-          onChange={handleInputChange}
-          placeholder="Wert 1"
-        />
-        <input
-          type="text"
-          name="input2"
-          value={inputs.input2}
-          onChange={handleInputChange}
-          placeholder="Wert 2"
-        />
-        <input
-          type="text"
-          name="input3"
-          value={inputs.input3}
-          onChange={handleInputChange}
-          placeholder="Wert 3"
-        />
-        <input
-          type="text"
-          name="input4"
-          value={inputs.input4}
-          onChange={handleInputChange}
-          placeholder="Wert 4"
-        />
-        <button onClick={addRow}>Werte hinzufügen</button>
-      </div>
+    <Container className="mt-4">
+      <h1 className="mb-4">Dein Spendenkorb</h1>
 
-      <table style={{ margin: "20px auto", borderCollapse: "collapse" }}>
+      {/* Formular */}
+      <Form className="mb-4">
+        <Form.Group className="mb-3">
+          <Form.Label>Kleidungsart</Form.Label>
+          <Form.Select
+            name="kleidungsart"
+            value={formData.kleidungsart}
+            onChange={handleInputChange}
+          >
+            <option value="">None</option>
+            <option value="TShirt">TShirt</option>
+            <option value="Pullover">Pullover</option>
+            <option value="Hose">Hose</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Größe</Form.Label>
+          <Form.Select
+            name="groesse"
+            value={formData.groesse}
+            onChange={handleInputChange}
+          >
+            <option value="">None</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Geschlecht</Form.Label>
+          <Form.Select
+            name="geschlecht"
+            value={formData.geschlecht}
+            onChange={handleInputChange}
+          >
+            <option value="">None</option>
+            <option value="Maennlich">Männlich</option>
+            <option value="Weiblich">Weiblich</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Menge in Stk</Form.Label>
+          <Form.Select
+            name="menge"
+            value={formData.menge}
+            onChange={handleInputChange}
+          >
+            <option value="">None</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Button variant="success" onClick={addRow}>
+          Hinzufügen
+        </Button>
+        <Button variant="danger" size="sm" onClick={() => test()}>
+          Test
+        </Button>
+      </Form>
+
+      {/* Tabelle */}
+      <Table striped bordered hover responsive>
         <thead>
           <tr>
-            <th style={styles.cell}>Spalte 1</th>
-            <th style={styles.cell}>Spalte 2</th>
-            <th style={styles.cell}>Spalte 3</th>
-            <th style={styles.cell}>Spalte 4</th>
-            <th style={styles.cell}>Aktionen</th>
+            <th>#</th>
+            <th>Kleidungsart</th>
+            <th>Größe</th>
+            <th>Geschlecht</th>
+            <th>Menge in Stk</th>
+            <th>Aktionen</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, index) => (
+          {tableData.map((row, index) => (
             <tr key={index}>
-              <td style={styles.cell}>{row.input1}</td>
-              <td style={styles.cell}>{row.input2}</td>
-              <td style={styles.cell}>{row.input3}</td>
-              <td style={styles.cell}>{row.input4}</td>
-              <td style={styles.cell}>
-                <button onClick={() => removeRow(index)}>Entfernen</button>
+              <td>{index + 1}</td>
+              <td>{row.kleidungsart}</td>
+              <td>{row.groesse}</td>
+              <td>{row.geschlecht}</td>
+              <td>{row.menge}</td>
+              <td>
+                <Button
+                  variant="success"
+                  size="sm"
+                  onClick={() => deleteRow(index)}
+                >
+                  Löschen
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </Container>
   );
 }
-
-const styles = {
-  cell: {
-    border: "1px solid black",
-    padding: "8px",
-    textAlign: "center",
-  },
-};
-

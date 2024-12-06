@@ -1,0 +1,6 @@
+.fixed-image {
+    width: 100%; /* Bild füllt die Breite der Karte */
+    height: 300px; /* Feste Höhe für alle Bilder */
+    object-fit: cover; /* Bild wird beschnitten, um den Container zu füllen */
+  }
+  

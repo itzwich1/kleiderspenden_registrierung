@@ -3,6 +3,7 @@ import { Stepper } from "react-form-stepper";
 import AbgabeartForm from "./AbgabeartForm";
 import KrisengebietForm from "./KrisengebietForm";
 import SpendenkorbForm from "./SpendenkorbForm";
+import AdresseForm from "./AdresseForm";
 import { Button } from "react-bootstrap";
 
 export default function RegisterForm() {
@@ -90,7 +91,7 @@ export default function RegisterForm() {
           />
         );
       case 2:
-        return <div></div>;
+        return <AdresseForm/>;
 
       case 3:
         return <SpendenkorbForm />;

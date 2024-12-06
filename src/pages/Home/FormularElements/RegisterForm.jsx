@@ -16,11 +16,15 @@ export default function RegisterForm() {
     krisengebiet: {},
     spendenkorb: {},
   });*/
+  const Abgabeart = {
+    ABHOLUNG: 0,
+    ABGABE_VOR_ORT: 1,
+  }
 
   let steps = [
     { name: "Abgabeart", isVisible: true },
     { name: "Kriesengebiet", isVisible: true },
-    { name: "Adresse", isVisible: deliveryOption === 0 },
+    { name: "Adresse", isVisible: deliveryOption === Abgabeart.ABHOLUNG },
     { name: "Spendenkorb", isVisible: true },
   ];
 
@@ -44,6 +48,8 @@ export default function RegisterForm() {
   };
 
   const renderButtons = () => {
+    //Jeh nach auswahl maximale Anazahl an Schritten 
+    let maxSteps = deliveryOption === Abgabeart.ABHOLUNG ? 3 : 2;
     return (
       <div className="d-flex gap-5 mt-3">
         {/* Back Button */}
@@ -55,7 +61,7 @@ export default function RegisterForm() {
         >
           Back
         </Button>
-        {currentStep === 3 ? (
+        {currentStep ===  maxSteps ? (
           <Button variant="primary" size="lg">
             Bestellung Abschließen
           </Button>
@@ -91,7 +97,7 @@ export default function RegisterForm() {
           />
         );
       case 2:
-        return <AdresseForm/>;
+        return <AdresseForm />;
 
       case 3:
         return <SpendenkorbForm />;

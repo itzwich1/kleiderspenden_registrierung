@@ -80,15 +80,16 @@ export default function RegisterForm() {
   };
 
   const renderStepContent = () => {
-    switch (currentStep) {
-      case 0:
+    const currentVisibleStep = filtersteps[currentStep].name;
+    switch (currentVisibleStep) {
+      case "Abgabeart":
         return (
           <AbgabeartForm
             deliveryOption={deliveryOption}
             setDeliveryOption={setDeliveryOption}
           />
         );
-      case 1:
+      case "Kriesengebiet":
         //selectedRegionChange funktion an Kind Componente uebergeben
         return (
           <KrisengebietForm
@@ -96,10 +97,10 @@ export default function RegisterForm() {
             setSelectedRegion={setSelectedRegion}
           />
         );
-      case 2:
+      case "Adresse":
         return <AdresseForm />;
 
-      case 3:
+      case "Spendenkorb":
         return <SpendenkorbForm />;
       default:
         return null;

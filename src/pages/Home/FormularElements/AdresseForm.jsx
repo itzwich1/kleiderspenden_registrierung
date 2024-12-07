@@ -76,12 +76,6 @@ export default function AdresseForm() {
           placeholder="Vorname"
           onChange={dataChanged}
         />
-        <Form.Control.Feedback type="valid">
-          Sieht gut aus!
-        </Form.Control.Feedback>
-        <Form.Control.Feedback type="invalid">
-          Bitte Vorname eingeben.
-        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Control
@@ -91,12 +85,6 @@ export default function AdresseForm() {
           placeholder="Nachname"
           onChange={dataChanged}
         />
-        <Form.Control.Feedback type="valid">
-          Sieht gut aus!
-        </Form.Control.Feedback>
-        <Form.Control.Feedback type="invalid">
-          Bitte Nachname eingeben.
-        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Control
@@ -106,12 +94,6 @@ export default function AdresseForm() {
           placeholder="Straße"
           onChange={dataChanged}
         />
-        <Form.Control.Feedback type="valid">
-          Sieht gut aus!
-        </Form.Control.Feedback>
-        <Form.Control.Feedback type="invalid">
-          Bitte Straße eingeben.
-        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Control
@@ -121,12 +103,6 @@ export default function AdresseForm() {
           placeholder="Hausnummer"
           onChange={dataChanged}
         />
-        <Form.Control.Feedback type="valid">
-          Sieht gut aus!
-        </Form.Control.Feedback>
-        <Form.Control.Feedback type="invalid">
-          Bitte Hausnummer eingeben.
-        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Control

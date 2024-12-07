@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Form, Button, Table, Container } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 export default function AdresseForm() {
-  const [validated, setValidated] = useState(false);
-
   const [formData, setFormData] = useState({
     vorname: "",
     nachname: "",
@@ -12,39 +10,45 @@ export default function AdresseForm() {
     plz: "",
   });
 
-  const [valid, setValid] = useState(true);
+  const [valid, setValid] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const [plzInvalid, setPlzInvalid] = useState(false);
 
   const dataChanged = (e) => {
     const { name, value } = e.target;
-    console.log("Name: ", name);
-    console.log("Value: ", value);
+
     setFormData({ ...formData, [name]: value });
   };
 
   const checkData = () => {
-    let warning = "The following fields are invalid: ";
+    let warning = "Die Folgenden Eingabefelder enthalten Fehler: ";
     let error = false;
 
     if (formData.vorname.length <= 0) {
-        warning += " Vorname";
+      warning += " Vorname";
       error = true;
     }
     if (formData.nachname.length <= 0) {
-        warning += " Nachname";
+      warning += " Nachname";
       error = true;
     }
     if (formData.strasse.length <= 0) {
-        warning += " Straße";
+      warning += " Straße";
       error = true;
     }
     if (formData.hausnummer.length <= 0) {
-        warning += " Hausnummer";
+      warning += " Hausnummer";
       error = true;
     }
-    if (formData.hausnummer.length <= 0) {
-        warning += " PLZ";
+    if (formData.plz.length <= 0) {
+      console.log(formData);
+      warning += " PLZ";
       error = true;
+    } else {
+        console.log("Valid");
+      if (formData.plz.substring(0, 2) !== "95") {
+        setPlzInvalid(true);
+      }
     }
 
     setErrorText(warning);
@@ -52,19 +56,18 @@ export default function AdresseForm() {
   };
 
   return (
-    <Form className="mt-4" noValidate validated={validated}>
+    <Form className="mt-4" noValidate>
       <h2>Hier ist die Adressen Form</h2>
       {valid && (
-          <div
-            style={{
-              color: "red",
-              marginBottom: "15px",
-              fontWeight: "bold",
-            }}
-          >
-            {errorText}
-          </div>
-        )}
+        <div
+          style={{
+            color: "red",
+            marginBottom: "15px",
+          }}
+        >
+          {errorText}
+        </div>
+      )}
       <Form.Group className="mb-3">
         <Form.Control
           required
@@ -133,12 +136,16 @@ export default function AdresseForm() {
           name="plz"
           onChange={dataChanged}
         />
-        <Form.Control.Feedback type="valid">
-          Sieht gut aus!
-        </Form.Control.Feedback>
-        <Form.Control.Feedback type="invalid">
-          Bitte PLZ eingeben.
-        </Form.Control.Feedback>
+        {plzInvalid && (
+          <div
+            style={{
+              color: "red",
+              marginBottom: "15px",
+            }}
+          >
+            Ihre Spende kann leider nicht abgeholt werden, da wir nur in Selb (95100) und Umgebung tätig sind!
+          </div>
+        )}
       </Form.Group>
       <Button variant="success" size="lg" onClick={checkData}>
         Daten prüfen

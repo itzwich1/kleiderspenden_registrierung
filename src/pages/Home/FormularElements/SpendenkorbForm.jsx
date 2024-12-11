@@ -11,9 +11,6 @@ export default function SpendenkorbForm({spendenKorb, setSpendenKorb}) {
     menge: "",
   });
 
-  //Speichern des Spendenkorbs
-  const [tableData, setTableData] = useState([]);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -27,7 +24,6 @@ export default function SpendenkorbForm({spendenKorb, setSpendenKorb}) {
     //Sobald alle Werte gefuellt sind
     let isEmpty = Object.values(formData).some((value) => value === "");
     if (!isEmpty) {
-      setTableData([...tableData, formData]);
       setSpendenKorb([...spendenKorb, formData]);
       setFormData({ kleidungsart: "", groesse: "", geschlecht: "", menge: "" });
     } else {
@@ -37,8 +33,8 @@ export default function SpendenkorbForm({spendenKorb, setSpendenKorb}) {
 
   //Zeile hinzufuegen
   const deleteRow = (index) => {
-    const updatedData = tableData.filter((_, i) => i !== index);
-    setTableData(updatedData);
+    const updatedData = spendenKorb.filter((_, i) => i !== index);
+    setSpendenKorb(updatedData)
   };
 
   return (
@@ -125,7 +121,7 @@ export default function SpendenkorbForm({spendenKorb, setSpendenKorb}) {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, index) => (
+          {spendenKorb.map((row, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{row.kleidungsart}</td>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 
-export default function AdresseForm({setDisableNext}) {
+export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
   const [formData, setFormData] = useState({
     vorname: "",
     nachname: "",
@@ -132,7 +132,7 @@ export default function AdresseForm({setDisableNext}) {
       <Form.Group className="mb-3">
         <Form.Control
           required
-          type="date"
+          type="datetime-local"
           name="datum"
           placeholder="Datum"
           onChange={dataChanged}

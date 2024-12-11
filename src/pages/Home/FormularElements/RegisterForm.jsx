@@ -13,6 +13,14 @@ export default function RegisterForm() {
   const [selectedRegion, setSelectedRegion] = useState("Ukraine");
   const [disableNext, setDisableNext] = useState(false);
   const [spendenKorb, setSpendenKorb] = useState([]);
+  const [adresse, setAdresse] = useState({
+    vorname: "",
+    nachname: "",
+    strasse: "",
+    hausnummer: "",
+    plz: "",
+    datum_zeit: "",
+  })
 
   /*const [userData, setUserData] = useState({
     abgabeart: {},
@@ -104,7 +112,7 @@ export default function RegisterForm() {
           />
         );
       case "Adresse":
-        return <AdresseForm setDisableNext={setDisableNext}/>;
+        return <AdresseForm adresse={adresse} setAdresse={setAdresse} setDisableNext={setDisableNext}/>;
 
       case "Spendenkorb":
         return <SpendenkorbForm spendenKorb={spendenKorb} setSpendenKorb={setSpendenKorb}/>;

@@ -9,7 +9,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const forwardToRegistrationForm = () => {
-    navigate("/RegisterForm"); // Leitet zur /about-Seite weiter
+    navigate("/RegisterForm");
   };
 
   return (

@@ -123,6 +123,15 @@ export default function AdresseForm() {
           </div>
         )}
       </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Control
+          required
+          type="date"
+          name="datum"
+          placeholder="Datum"
+          onChange={dataChanged}
+        />
+      </Form.Group>
       <Button variant="success" size="lg" onClick={checkData}>
         Daten prüfen
       </Button>

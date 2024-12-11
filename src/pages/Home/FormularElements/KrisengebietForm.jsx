@@ -6,7 +6,6 @@ import afgahnistan from "../../../images/Krisengebiet/Afgahnistan.png";
 import sudan from "../../../images/Krisengebiet/Sudan.png";
 import mali from "../../../images/Krisengebiet/Mali.png";
 import somalia from "../../../images/Krisengebiet/Somalia.png";
-//import ukraine from "../../../images/Krisengebiet/"
 
 export default function KrisengebietForm({ selectedRegion, setSelectedRegion }) {
 

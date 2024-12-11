@@ -9,11 +9,11 @@ import Footer from "./components/Footer/Footer";
 import RegisterForm from "./pages/Home/FormularElements/RegisterForm";
 import { Container } from "react-bootstrap";
 
-
 export default function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <BrowserRouter>
+        {/* Main section */}
         <Header />
 
         {/* Main section */}

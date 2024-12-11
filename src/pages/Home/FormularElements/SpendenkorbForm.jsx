@@ -34,10 +34,6 @@ export default function SpendenkorbForm() {
     }
   };
 
-  const test = () => {
-    console.log("Tabellen Daten: ", tableData);
-  };
-
   //Zeile hinzufuegen
   const deleteRow = (index) => {
     const updatedData = tableData.filter((_, i) => i !== index);
@@ -112,9 +108,6 @@ export default function SpendenkorbForm() {
 
         <Button variant="success" onClick={addRow}>
           Hinzufügen
-        </Button>
-        <Button variant="danger" size="sm" onClick={() => test()}>
-          Test
         </Button>
       </Form>
 

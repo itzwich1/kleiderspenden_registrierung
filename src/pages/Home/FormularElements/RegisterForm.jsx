@@ -5,11 +5,13 @@ import KrisengebietForm from "./KrisengebietForm";
 import SpendenkorbForm from "./SpendenkorbForm";
 import AdresseForm from "./AdresseForm";
 import { Button } from "react-bootstrap";
+//import { isVisible } from "@testing-library/user-event/dist/utils";
 
 export default function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState(0);
-  const [selectedRegion, setSelectedRegion] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("Ukraine");
+  const [disableNext, setDisableNext] = useState(false);
 
   /*const [userData, setUserData] = useState({
     abgabeart: {},
@@ -19,19 +21,20 @@ export default function RegisterForm() {
   const Abgabeart = {
     ABHOLUNG: 0,
     ABGABE_VOR_ORT: 1,
-  }
+  };
 
   let steps = [
     { name: "Abgabeart", isVisible: true },
     { name: "Kriesengebiet", isVisible: true },
     { name: "Adresse", isVisible: deliveryOption === Abgabeart.ABHOLUNG },
     { name: "Spendenkorb", isVisible: true },
+    { name: "Bestätigung", isVisible: true },
   ];
 
   let filtersteps = steps.filter((step) => step.isVisible);
 
   const nextClicked = () => {
-    if (currentStep < 3) {
+    if (currentStep < 4) {
       setCurrentStep((prevStep) => prevStep + 1);
     }
   };
@@ -45,10 +48,11 @@ export default function RegisterForm() {
   const testClicked = () => {
     console.log("Steps: ", steps.length);
     console.log("FilterSteps: ", filtersteps.length);
+    //setDisableNext(true);
   };
 
   const renderButtons = () => {
-    //Jeh nach auswahl maximale Anazahl an Schritten 
+    //Jeh nach auswahl maximale Anazahl an Schritten
     let maxSteps = deliveryOption === Abgabeart.ABHOLUNG ? 3 : 2;
     return (
       <div className="d-flex gap-5 mt-3">
@@ -61,8 +65,8 @@ export default function RegisterForm() {
         >
           Back
         </Button>
-        {currentStep ===  maxSteps ? (
-          <Button variant="primary" size="lg">
+        {currentStep === maxSteps ? (
+          <Button variant="primary" size="lg" onClick={nextClicked}>
             Bestellung Abschließen
           </Button>
         ) : (
@@ -70,7 +74,7 @@ export default function RegisterForm() {
             variant="success"
             size="lg"
             onClick={nextClicked}
-            disabled={currentStep === 3}
+            disabled={currentStep === 3 || disableNext}
           >
             Next
           </Button>
@@ -90,7 +94,6 @@ export default function RegisterForm() {
           />
         );
       case "Kriesengebiet":
-        //selectedRegionChange funktion an Kind Componente uebergeben
         return (
           <KrisengebietForm
             selectedRegion={selectedRegion}
@@ -102,6 +105,15 @@ export default function RegisterForm() {
 
       case "Spendenkorb":
         return <SpendenkorbForm />;
+      case "Bestätigung":
+        return (
+          <div>
+            <h3 style={{ color: "green" }}>Ihre Bestellung war erfolgreich</h3>
+            <p></p>
+            <p>{selectedRegion}</p>
+            <p>{deliveryOption === Abgabeart.ABHOLUNG ? "Abholung" : "Abgabe vor Ort"}</p>
+          </div>
+        );
       default:
         return null;
     }

@@ -2,13 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 
 export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
-  const [formData, setFormData] = useState({
-    vorname: "",
-    nachname: "",
-    strasse: "",
-    hausnummer: "",
-    plz: "",
-  });
+
 
   useEffect(() => {
     setDisableNext(true);
@@ -21,36 +15,36 @@ export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
   const dataChanged = (e) => {
     const { name, value } = e.target;
 
-    setFormData({ ...formData, [name]: value });
+    setAdresse({ ...adresse, [name]: value });
   };
 
   const checkData = () => {
     let warning = "Die Folgenden Eingabefelder enthalten Fehler: ";
     let error = false;
 
-    if (formData.vorname.length <= 0) {
+    if (adresse.vorname.length <= 0) {
       warning += " Vorname";
       error = true;
     }
-    if (formData.nachname.length <= 0) {
+    if (adresse.nachname.length <= 0) {
       warning += " Nachname";
       error = true;
     }
-    if (formData.strasse.length <= 0) {
+    if (adresse.strasse.length <= 0) {
       warning += " Straße";
       error = true;
     }
-    if (formData.hausnummer.length <= 0) {
+    if (adresse.hausnummer.length <= 0) {
       warning += " Hausnummer";
       error = true;
     }
-    if (formData.plz.length <= 0) {
-      console.log(formData);
+    if (adresse.plz.length <= 0) {
+      console.log(adresse);
       warning += " PLZ";
       error = true;
     } else {
         console.log("Valid");
-      if (formData.plz.substring(0, 2) !== "95") {
+      if (adresse.plz.substring(0, 2) !== "95") {
         setPlzInvalid(true);
       }
     }

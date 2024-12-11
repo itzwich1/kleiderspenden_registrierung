@@ -20,13 +20,8 @@ export default function RegisterForm() {
     hausnummer: "",
     plz: "",
     datum_zeit: "",
-  })
+  });
 
-  /*const [userData, setUserData] = useState({
-    abgabeart: {},
-    krisengebiet: {},
-    spendenkorb: {},
-  });*/
   const Abgabeart = {
     ABHOLUNG: 0,
     ABGABE_VOR_ORT: 1,
@@ -112,17 +107,54 @@ export default function RegisterForm() {
           />
         );
       case "Adresse":
-        return <AdresseForm adresse={adresse} setAdresse={setAdresse} setDisableNext={setDisableNext}/>;
+        return (
+          <AdresseForm
+            adresse={adresse}
+            setAdresse={setAdresse}
+            setDisableNext={setDisableNext}
+          />
+        );
 
       case "Spendenkorb":
-        return <SpendenkorbForm spendenKorb={spendenKorb} setSpendenKorb={setSpendenKorb}/>;
+        return (
+          <SpendenkorbForm
+            spendenKorb={spendenKorb}
+            setSpendenKorb={setSpendenKorb}
+          />
+        );
       case "Bestätigung":
         return (
           <div>
             <h3 style={{ color: "green" }}>Ihre Bestellung war erfolgreich</h3>
-            <p></p>
-            <p>{selectedRegion}</p>
-            <p>{deliveryOption === Abgabeart.ABHOLUNG ? "Abholung" : "Abgabe vor Ort"}</p>
+            {deliveryOption === Abgabeart.ABHOLUNG ? (
+              <>
+                <p>
+                  Vielen dank für deine Spende:{" "}
+                  {adresse.vorname + " " + adresse.nachname}
+                </p>
+                <p>Postleitzahl: {adresse.plz}</p>
+                <p>Postleitzahl: {adresse.datum_zeit}</p>
+              </>
+            ) : (
+              <p>Vielen dank für deine Spende</p>
+            )}
+
+            <p>Details:</p>
+            <ul>
+              {spendenKorb.map((item, index) => (
+                <li key={index}>
+                  {item.kleidungsart}, {item.groesse},{item.geschlecht},{" "}
+                  {item.menge} Stk
+                </li>
+              ))}
+            </ul>
+            <p>Krisengebiet: {selectedRegion}</p>
+            <p>
+              Art der Abholung:{" "}
+              {deliveryOption === Abgabeart.ABHOLUNG
+                ? "Abholung"
+                : "Abgabe vor Ort"}
+            </p>
           </div>
         );
       default:

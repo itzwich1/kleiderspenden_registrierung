@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Table, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function SpendenkorbForm() {
+export default function SpendenkorbForm({spendenKorb, setSpendenKorb}) {
   //Aktuelle gewaehlte Werte
   const [formData, setFormData] = useState({
     kleidungsart: "",
@@ -28,6 +28,7 @@ export default function SpendenkorbForm() {
     let isEmpty = Object.values(formData).some((value) => value === "");
     if (!isEmpty) {
       setTableData([...tableData, formData]);
+      setSpendenKorb([...spendenKorb, formData]);
       setFormData({ kleidungsart: "", groesse: "", geschlecht: "", menge: "" });
     } else {
       alert("Bitte alle Felder ausfüllen.");

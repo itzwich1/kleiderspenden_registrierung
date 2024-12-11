@@ -12,6 +12,7 @@ export default function RegisterForm() {
   const [deliveryOption, setDeliveryOption] = useState(0);
   const [selectedRegion, setSelectedRegion] = useState("Ukraine");
   const [disableNext, setDisableNext] = useState(false);
+  const [spendenKorb, setSpendenKorb] = useState([]);
 
   /*const [userData, setUserData] = useState({
     abgabeart: {},
@@ -40,6 +41,7 @@ export default function RegisterForm() {
   };
 
   const backClicked = () => {
+    setDisableNext(false);
     if (currentStep > 0) {
       setCurrentStep((prevStep) => prevStep - 1);
     }
@@ -48,6 +50,7 @@ export default function RegisterForm() {
   const testClicked = () => {
     console.log("Steps: ", steps.length);
     console.log("FilterSteps: ", filtersteps.length);
+    console.log(spendenKorb);
     //setDisableNext(true);
   };
 
@@ -101,10 +104,10 @@ export default function RegisterForm() {
           />
         );
       case "Adresse":
-        return <AdresseForm />;
+        return <AdresseForm setDisableNext={setDisableNext}/>;
 
       case "Spendenkorb":
-        return <SpendenkorbForm />;
+        return <SpendenkorbForm spendenKorb={spendenKorb} setSpendenKorb={setSpendenKorb}/>;
       case "Bestätigung":
         return (
           <div>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 
-export default function AdresseForm() {
+export default function AdresseForm({setDisableNext}) {
   const [formData, setFormData] = useState({
     vorname: "",
     nachname: "",
@@ -9,6 +9,10 @@ export default function AdresseForm() {
     hausnummer: "",
     plz: "",
   });
+
+  useEffect(() => {
+    setDisableNext(true);
+  }, [setDisableNext]);
 
   const [valid, setValid] = useState(false);
   const [errorText, setErrorText] = useState("");
@@ -51,6 +55,8 @@ export default function AdresseForm() {
       }
     }
 
+    console.log(error);
+    setDisableNext(error);
     setErrorText(warning);
     setValid(error);
   };

@@ -19,7 +19,7 @@ export default function SpendenkorbForm({spendenKorb, setSpendenKorb}) {
     });
   };
 
-  //Zeile entfernen
+  //Zeile hinzufuegen
   const addRow = () => {
     //Sobald alle Werte gefuellt sind
     let isEmpty = Object.values(formData).some((value) => value === "");
@@ -31,7 +31,7 @@ export default function SpendenkorbForm({spendenKorb, setSpendenKorb}) {
     }
   };
 
-  //Zeile hinzufuegen
+  //Zeile entfernen
   const deleteRow = (index) => {
     const updatedData = spendenKorb.filter((_, i) => i !== index);
     setSpendenKorb(updatedData)

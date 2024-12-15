@@ -171,7 +171,9 @@ export default function RegisterForm() {
           activeBgColor: "#8bc34a",
           completedBgColor: "#1e352f",
           inactiveBgColor: "#cfd8dc",
+          size: "2rem", 
         }}
+        
       />
       <div
         style={{ marginTop: "20px" }}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col,Row,Container } from "react-bootstrap";
 
 export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
 
@@ -14,14 +14,11 @@ export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
 
   const dataChanged = (e) => {
     const { name, value } = e.target;
-
-    console.log(name);
-    console.log(value);
     setAdresse({ ...adresse, [name]: value });
   };
 
   const checkData = () => {
-    let warning = "Die Folgenden Eingabefelder enthalten Fehler: ";
+    let warning = "Eingabefehler in Feld: ";
     let error = false;
 
     if (adresse.vorname.length <= 0) {
@@ -57,85 +54,101 @@ export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
   };
 
   return (
-    <Form className="mt-4" noValidate>
-      <h2>Hier ist die Adressen Form</h2>
-      {valid && (
-        <div
-          style={{
-            color: "red",
-            marginBottom: "15px",
-          }}
-        >
-          {errorText}
-        </div>
-      )}
-      <Form.Group className="mb-3">
-        <Form.Control
-          required
-          type="text"
-          name="vorname"
-          placeholder="Vorname"
-          onChange={dataChanged}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Control
-          required
-          type="text"
-          name="nachname"
-          placeholder="Nachname"
-          onChange={dataChanged}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Control
-          required
-          type="text"
-          name="strasse"
-          placeholder="Straße"
-          onChange={dataChanged}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Control
-          required
-          type="text"
-          name="hausnummer"
-          placeholder="Hausnummer"
-          onChange={dataChanged}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Control
-          required
-          type="text"
-          placeholder="PLZ"
-          name="plz"
-          onChange={dataChanged}
-        />
-        {plzInvalid && (
-          <div
-            style={{
-              color: "red",
-              marginBottom: "15px",
-            }}
-          >
-            Ihre Spende kann leider nicht abgeholt werden, da wir nur in Selb (95100) und Umgebung tätig sind!
-          </div>
+    <Container>
+      <Form className="mt-4" noValidate>
+        {valid && (
+          <Row className="mb-3">
+            <Col>
+              <div style={{ color: "red" }}>{errorText}</div>
+            </Col>
+          </Row>
         )}
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Control
-          required
-          type="datetime-local"
-          name="datum"
-          placeholder="Datum"
-          onChange={dataChanged}
-        />
-      </Form.Group>
-      <Button variant="success" size="lg" onClick={checkData}>
-        Daten prüfen
-      </Button>
-    </Form>
+        <Row className="mb-3">
+          <Col xs={12} md={6}>
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                name="vorname"
+                placeholder="Vorname"
+                onChange={dataChanged}
+              />
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={6}>
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                name="nachname"
+                placeholder="Nachname"
+                onChange={dataChanged}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mb-3">
+          <Col xs={12} md={8}>
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                name="strasse"
+                placeholder="Straße"
+                onChange={dataChanged}
+              />
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={4}>
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                name="hausnummer"
+                placeholder="Hausnummer"
+                onChange={dataChanged}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mb-3">
+          <Col xs={12} md={6}>
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                placeholder="PLZ"
+                name="plz"
+                onChange={dataChanged}
+              />
+              {plzInvalid && (
+                <div style={{ color: "red", marginTop: "5px" }}>
+                  Ihre Spende kann leider nicht abgeholt werden, da wir nur in
+                  Selb (95100) und Umgebung tätig sind!
+                </div>
+              )}
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={6}>
+            <Form.Group>
+              <Form.Control
+                required
+                type="datetime-local"
+                name="datum"
+                placeholder="Datum"
+                onChange={dataChanged}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mb-3 text-center">
+          <Col>
+            <Button variant="success" size="lg" onClick={checkData}>
+              Daten prüfen
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </Container>
   );
 }

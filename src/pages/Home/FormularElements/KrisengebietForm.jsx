@@ -11,7 +11,7 @@ export default function KrisengebietForm({ selectedRegion, setSelectedRegion }) 
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h3>Bitte wählen Sie ein Land in d as Ihre Kleiderspende gehen soll.</h3>
+      <h1 className="mb-4 text-center">Bitte wählen Sie ein Land in d as Ihre Kleiderspende gehen soll.</h1>
       <Container>
         <Row className="justify-content-center">
           <Col className="d-flex justify-content-center">

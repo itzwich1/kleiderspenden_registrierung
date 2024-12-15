@@ -19,7 +19,7 @@ export default function RegisterForm() {
     strasse: "",
     hausnummer: "",
     plz: "",
-    datum_zeit: "",
+    datum: "",
   });
 
   const Abgabeart = {
@@ -51,10 +51,7 @@ export default function RegisterForm() {
   };
 
   const testClicked = () => {
-    console.log("Steps: ", steps.length);
-    console.log("FilterSteps: ", filtersteps.length);
-    console.log(spendenKorb);
-    //setDisableNext(true);
+    console.log(adresse.datum);
   };
 
   const renderButtons = () => {
@@ -133,7 +130,7 @@ export default function RegisterForm() {
                   {adresse.vorname + " " + adresse.nachname}
                 </p>
                 <p>Postleitzahl: {adresse.plz}</p>
-                <p>Postleitzahl: {adresse.datum_zeit}</p>
+                <p>Abholdatum: {adresse.datum}</p>
               </>
             ) : (
               <p>Vielen dank für deine Spende</p>

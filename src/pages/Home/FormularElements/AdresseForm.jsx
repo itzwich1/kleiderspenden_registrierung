@@ -15,6 +15,8 @@ export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
   const dataChanged = (e) => {
     const { name, value } = e.target;
 
+    console.log(name);
+    console.log(value);
     setAdresse({ ...adresse, [name]: value });
   };
 
@@ -48,8 +50,7 @@ export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
         setPlzInvalid(true);
       }
     }
-
-    console.log(error);
+    console.log(adresse.datum);
     setDisableNext(error);
     setErrorText(warning);
     setValid(error);

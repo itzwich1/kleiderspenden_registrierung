@@ -47,7 +47,7 @@ export default function Home() {
         </Row>
         <Row className="text-center flex-grow-1">
           <Col>
-            <Button variant="success" size="lg" onClick={forwardToRegistrationForm}>
+            <Button variant="success" size="lg" onClick={forwardToRegistrationForm} className="mb-5">
               Jetzt KleiderHeld werden
             </Button>
           </Col>

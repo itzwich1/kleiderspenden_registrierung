@@ -1,6 +1,7 @@
 /* Hintergrundfarbe für Navbar */
 .custom-navbar {
   background-color: #1e352f !important;
+  z-index: 1000;
 }
 
 /* Schriftfarbe für die Links in der Navbar */

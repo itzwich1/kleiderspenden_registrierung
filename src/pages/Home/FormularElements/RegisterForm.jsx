@@ -4,7 +4,7 @@ import AbgabeartForm from "./AbgabeartForm";
 import KrisengebietForm from "./KrisengebietForm";
 import SpendenkorbForm from "./SpendenkorbForm";
 import AdresseForm from "./AdresseForm";
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 //import { isVisible } from "@testing-library/user-event/dist/utils";
 
 export default function RegisterForm() {
@@ -50,38 +50,39 @@ export default function RegisterForm() {
     }
   };
 
-  const testClicked = () => {
-    console.log(adresse.datum);
-  };
-
   const renderButtons = () => {
     //Jeh nach auswahl maximale Anazahl an Schritten
     let maxSteps = deliveryOption === Abgabeart.ABHOLUNG ? 3 : 2;
     return (
-      <div className="d-flex gap-5 mt-3">
-        {/* Back Button */}
-        <Button
-          variant="success"
-          size="lg"
-          onClick={backClicked}
-          disabled={currentStep === 0}
-        >
-          Back
-        </Button>
-        {currentStep === maxSteps ? (
-          <Button variant="primary" size="lg" onClick={nextClicked}>
-            Bestellung Abschließen
-          </Button>
-        ) : (
-          <Button
-            variant="success"
-            size="lg"
-            onClick={nextClicked}
-            disabled={currentStep === 3 || disableNext}
-          >
-            Next
-          </Button>
-        )}
+      <div className="container">
+        <Row className="justify-content-center mt-3 mb-5">
+          <Col xs={6} className="text-center">
+            <Button
+              variant="success"
+              className="w-100"
+              onClick={backClicked}
+              disabled={currentStep === 0}
+            >
+              Back
+            </Button>
+          </Col>
+          <Col xs={6} className="text-center">
+            {currentStep === maxSteps ? (
+              <Button variant="primary" className="w-100" onClick={nextClicked}>
+                Bestellung Abschließen
+              </Button>
+            ) : (
+              <Button
+                variant="success"
+                className="w-100"
+                onClick={nextClicked}
+                disabled={currentStep === 3 || disableNext}
+              >
+                Next
+              </Button>
+            )}
+          </Col>
+        </Row>
       </div>
     );
   };
@@ -179,9 +180,6 @@ export default function RegisterForm() {
         {renderStepContent()}
         <div style={{ marginTop: "20px" }} className="d-flex gap-5 mt-3">
           {renderButtons()}
-          <Button variant="success" size="lg" onClick={testClicked}>
-            Test
-          </Button>
         </div>
       </div>
     </div>

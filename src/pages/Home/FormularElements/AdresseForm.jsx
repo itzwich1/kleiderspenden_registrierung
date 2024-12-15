@@ -3,10 +3,17 @@ import { Form, Button, Col,Row,Container } from "react-bootstrap";
 
 export default function AdresseForm({adresse, setAdresse, setDisableNext}) {
 
-
   useEffect(() => {
+    setAdresse({
+      vorname: "",
+      nachname: "",
+      strasse: "",
+      hausnummer: "",
+      plz: "",
+      datum: "",
+    });
     setDisableNext(true);
-  }, [setDisableNext]);
+  }, [setAdresse, setDisableNext]);
 
   const [valid, setValid] = useState(false);
   const [errorText, setErrorText] = useState("");

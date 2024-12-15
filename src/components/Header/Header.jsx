@@ -15,6 +15,17 @@ const Header = () => {
             alt="KleiderHeld Logo"
             style={{ height: "40px", objectFit: "cover" }}
           />
+          <span
+            style={{
+              fontSize: "0.8rem",
+              fontWeight: "bold",
+              marginTop: "10px",
+              color: "white", // Optional: Passe die Farbe an
+              textAlign: "center",
+            }}
+          >
+            KleiderHeld
+          </span>
         </Navbar.Brand>
 
         {/* Hamburger-Menü für mobile Ansicht */}
